@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-lime: #60ae48;
+  --color-lime-dark: #4d8c3a;
+  --color-lime-light: #7ac264;
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  --color-muted: #a3a3a3;
+  --color-card: #111111;
+  --color-card-hover: #1a1a1a;
+  --color-border: #222222;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #60ae48 #111111;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000000;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Custom scrollbar for webkit */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #111111;
+}
+::-webkit-scrollbar-thumb {
+  background: #60ae48;
+  border-radius: 3px;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #60ae48, #7ac264);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow effect */
+.glow-green {
+  box-shadow: 0 0 20px rgba(96, 174, 72, 0.3), 0 0 60px rgba(96, 174, 72, 0.1);
+}
+
+.glow-green-sm {
+  box-shadow: 0 0 10px rgba(96, 174, 72, 0.2);
+}
+
+/* Hover glow effects */
+.hover-glow {
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(96, 174, 72, 0.25), 0 0 50px rgba(96, 174, 72, 0.1), 0 8px 32px rgba(96, 174, 72, 0.15);
+}
+
+.hover-glow-sm {
+  transition: box-shadow 0.4s ease;
+}
+.hover-glow-sm:hover {
+  box-shadow: 0 0 15px rgba(96, 174, 72, 0.2), 0 4px 20px rgba(96, 174, 72, 0.1);
+}
+
+.hover-glow-intense {
+  transition: box-shadow 0.4s ease, transform 0.3s ease;
+}
+.hover-glow-intense:hover {
+  box-shadow: 0 0 30px rgba(96, 174, 72, 0.4), 0 0 80px rgba(96, 174, 72, 0.15), 0 12px 40px rgba(96, 174, 72, 0.2);
+}
+
+/* Button glow pulse on hover */
+.btn-glow {
+  transition: box-shadow 0.4s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+.btn-glow:hover {
+  box-shadow: 0 0 25px rgba(96, 174, 72, 0.5), 0 0 60px rgba(96, 174, 72, 0.2);
+}
+
+/* Image container glow */
+.img-glow {
+  transition: box-shadow 0.5s ease;
+}
+.img-glow:hover {
+  box-shadow: 0 0 25px rgba(96, 174, 72, 0.3), 0 0 60px rgba(96, 174, 72, 0.1);
+}
+
+/* Line animation */
+.line-reveal {
+  background: linear-gradient(90deg, #60ae48, #7ac264);
+  height: 3px;
+  transform-origin: left;
+}
+
+/* Video overlay gradient */
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+}
+
+/* Card hover shine effect */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+.card-shine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(96, 174, 72, 0.05),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+.card-shine:hover::before {
+  left: 100%;
+}
