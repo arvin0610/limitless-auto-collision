@@ -39,8 +39,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# large media assets (host separately — too large for GitHub)
-public/videos/
-public/images/gallery/
-public/images/about/
