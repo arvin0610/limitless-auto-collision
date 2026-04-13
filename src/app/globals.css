@@ -10,8 +10,19 @@
   --color-card: #111111;
   --color-card-hover: #1a1a1a;
   --color-border: #222222;
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-sans: var(--font-body);
+}
+
+/* Apply display font to all major headings by default */
+h1, h2, h3, .font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.font-body {
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 
 * {

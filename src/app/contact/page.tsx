@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 import SectionHeading from "@/components/SectionHeading";
+import FAQSection from "@/components/FAQSection";
 import { BUSINESS } from "@/lib/constants";
 import {
   MapPinIcon,
@@ -336,6 +337,9 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      {/* ─── FAQ ─── */}
+      <FAQSection background="black" />
     </>
   );
 }

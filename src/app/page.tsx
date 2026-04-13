@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import AnimatedSection from "@/components/AnimatedSection";
 import SectionHeading from "@/components/SectionHeading";
+import FAQSection from "@/components/FAQSection";
 import { BUSINESS } from "@/lib/constants";
 import {
   WrenchScrewdriverIcon,
@@ -112,35 +113,20 @@ export default function Home() {
           style={{ opacity: heroOpacity }}
           className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mb-6"
-          >
-            <Image
-              src="/images/logo.png"
-              alt={BUSINESS.name}
-              width={100}
-              height={100}
-              className="mx-auto drop-shadow-2xl"
-            />
-          </motion.div>
-
           <motion.span
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-lime text-xs sm:text-sm font-bold uppercase tracking-[0.4em] mb-4"
+            transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="text-lime text-xs sm:text-sm font-bold uppercase tracking-[0.4em] mb-6"
           >
             {BUSINESS.tagline}
           </motion.span>
 
           <motion.h1
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-none"
+            transition={{ delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[0.95]"
           >
             LIMITLESS
             <br />
@@ -148,19 +134,19 @@ export default function Home() {
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-            className="mt-6 text-lg md:text-xl text-white/70 max-w-xl"
+            transition={{ delay: 0.7, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-6 text-lg md:text-xl text-white/70 max-w-xl font-body"
           >
             I-CAR Gold Class certified collision repair in the San Fernando
             Valley. Expert work, lifetime warranty, fair pricing.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.6 }}
+            transition={{ delay: 0.9, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="mt-10 flex flex-col sm:flex-row gap-4"
           >
             <Link
@@ -243,31 +229,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection direction="left">
-              <div className="relative">
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden img-glow">
-                  <Image
-                    src="/images/about/header-image.jpg"
-                    alt="Limitless Auto Collision technicians at work"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4, duration: 0.5 }}
-                  className="absolute -bottom-6 -right-6 bg-lime text-black p-6 rounded-2xl shadow-2xl"
-                >
-                  <span className="text-4xl font-bold">
-                    {BUSINESS.stats.years}
-                  </span>
-                  <span className="block text-sm font-bold uppercase tracking-wider mt-1">
-                    Years in
-                    <br />
-                    Business
-                  </span>
-                </motion.div>
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden img-glow">
+                <Image
+                  src="/images/about/header-image.jpg"
+                  alt="Limitless Auto Collision technicians at work"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </AnimatedSection>
 
@@ -505,6 +473,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ─── FAQ ─── */}
+      <FAQSection />
 
       {/* ─── CTA ─── */}
       <section className="relative py-32 overflow-hidden">

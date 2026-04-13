@@ -1,21 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Display font — bold contemporary editorial
+const display = Bricolage_Grotesque({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Body font — refined, neutral but characterful
+const dmSans = DM_Sans({
+  variable: "--font-body",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Limitless Auto Collision | I-CAR Gold Class Collision Repair — San Fernando Valley",
+  title:
+    "Limitless Auto Collision | I-CAR Gold Class Collision Repair — San Fernando Valley",
   description:
     "I-CAR Gold Class certified collision repair in San Fernando Valley & Los Angeles. 8+ years, lifetime warranty, free estimates. Collision, PDR, mechanical, detailing, towing.",
   keywords:
@@ -30,9 +35,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      className={`${display.variable} ${dmSans.variable} antialiased`}
     >
-      <body className="min-h-screen flex flex-col bg-black text-white">
+      <body className="min-h-screen flex flex-col bg-black text-white font-body">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

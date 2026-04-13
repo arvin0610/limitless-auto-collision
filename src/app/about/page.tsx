@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 import SectionHeading from "@/components/SectionHeading";
+import FAQSection from "@/components/FAQSection";
 import { BUSINESS } from "@/lib/constants";
 import {
   ArrowRightIcon,
@@ -147,11 +148,11 @@ export default function AboutPage() {
               <AnimatedSection key={stat.label} delay={i * 0.1}>
                 <div className="text-center">
                   <motion.span
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 + 0.2, duration: 0.5 }}
-                    className="block text-5xl md:text-6xl font-bold gradient-text"
+                    transition={{ delay: i * 0.1 + 0.2, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                    className="block text-5xl md:text-6xl font-extrabold gradient-text font-display"
                   >
                     {stat.value}
                   </motion.span>
@@ -271,6 +272,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* ─── FAQ ─── */}
+      <FAQSection background="black" />
 
       {/* ─── CTA ─── */}
       <section className="py-32 relative overflow-hidden">

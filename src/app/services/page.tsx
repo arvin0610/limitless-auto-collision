@@ -5,78 +5,14 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 import SectionHeading from "@/components/SectionHeading";
+import FAQSection from "@/components/FAQSection";
+import { SERVICES } from "@/lib/services";
 import { BUSINESS } from "@/lib/constants";
 import {
   ArrowRightIcon,
   CheckBadgeIcon,
   PhoneIcon,
 } from "@heroicons/react/24/outline";
-
-const services = [
-  {
-    name: "Collision Repair",
-    image: "/images/services/glass-replacement.png",
-    description:
-      "Structural and cosmetic restoration to factory specs — frame straightening, panel replacement, and computerized color matching.",
-    highlights: ["Frame & unibody repair", "Panel alignment", "Color matching"],
-  },
-  {
-    name: "Auto Detailing",
-    image: "/images/services/detailing.png",
-    description:
-      "Multi-stage interior and exterior restoration: clay bar, paint correction, ceramic coating, and deep conditioning.",
-    highlights: ["Paint correction", "Ceramic coating", "Interior deep clean"],
-  },
-  {
-    name: "Free Estimates",
-    image: "/images/services/free-estimates.png",
-    description:
-      "Walk in or call for a thorough damage inspection with digital documentation and a detailed, itemized repair plan.",
-    highlights: ["Itemized breakdown", "Digital photos", "Insurance-ready"],
-  },
-  {
-    name: "Full Service Mechanical",
-    image: "/images/services/full-service-mechanical.png",
-    description:
-      "Bumper-to-bumper mechanical work: engine, transmission, brakes, suspension, A/C, and electrical diagnostics.",
-    highlights: ["Engine & transmission", "Brake & suspension", "Electrical"],
-  },
-  {
-    name: "Insurance Assistance",
-    image: "/images/services/insurance-assistance.png",
-    description:
-      "We file your claim, talk to adjusters, provide photo documentation, and arrange direct billing with all major carriers.",
-    highlights: ["All carriers accepted", "Direct billing", "Claims handled"],
-  },
-  {
-    name: "Lifetime Warranty",
-    image: "/images/services/lifetime-warranty.png",
-    description:
-      "Every repair guaranteed for as long as you own the vehicle. Workmanship defects fixed free — no deductibles, no expiration.",
-    highlights: ["All workmanship", "No expiration", "No deductibles"],
-  },
-  {
-    name: "Motorcycle Repair",
-    image: "/images/services/motorcycle-repair.png",
-    description:
-      "Collision repair, engine rebuilds, electrical work, and custom bodywork and paint for all makes of motorcycle.",
-    highlights: ["Collision & body", "Engine & electrical", "Custom paint"],
-  },
-  {
-    name: "Paintless Dent Repair",
-    image: "/images/services/paintless-dent-repair.png",
-    description:
-      "Precision tools restore dented panels from behind — no sanding, fillers, or repainting. Preserves factory finish and resale value.",
-    highlights: ["Original paint kept", "Resale value preserved", "Same-day available"],
-  },
-  {
-    name: "24/7 Towing",
-    image: "/images/services/towing.png",
-    description:
-      "Flatbed transport to our facility anytime — day or night, anywhere in LA County. Free tow with qualifying repairs.",
-    highlights: ["Around the clock", "Flatbed for safety", "Free with repairs"],
-  },
-];
 
 export default function ServicesPage() {
   return (
@@ -97,42 +33,48 @@ export default function ServicesPage() {
       <section className="pb-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, i) => (
-              <AnimatedSection key={service.name} delay={i * 0.08}>
-                <motion.div
-                  whileHover={{ y: -8 }}
-                  transition={{ duration: 0.3 }}
-                  className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-lime/30 transition-all duration-500 hover-glow h-full flex flex-col"
-                >
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <Image
-                      src={service.image}
-                      alt={service.name}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-60" />
-                  </div>
-                  <div className="p-8 flex flex-col flex-1">
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-lime transition-colors duration-300">
-                      {service.name}
-                    </h3>
-                    <p className="text-sm text-muted leading-relaxed mb-5 flex-1">
-                      {service.description}
-                    </p>
-                    <ul className="space-y-2">
-                      {service.highlights.map((h) => (
-                        <li
-                          key={h}
-                          className="flex items-center gap-2 text-xs text-white/70"
-                        >
-                          <CheckBadgeIcon className="w-4 h-4 text-lime flex-shrink-0" />
-                          {h}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.div>
+            {SERVICES.map((service, i) => (
+              <AnimatedSection key={service.slug} delay={i * 0.06}>
+                <Link href={`/services/${service.slug}`} className="block h-full">
+                  <motion.div
+                    whileHover={{ y: -4 }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-lime/30 transition-all duration-500 hover-glow h-full flex flex-col"
+                  >
+                    <div className="relative aspect-[16/10] overflow-hidden">
+                      <Image
+                        src={service.image}
+                        alt={service.name}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-60" />
+                    </div>
+                    <div className="p-8 flex flex-col flex-1">
+                      <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-lime transition-colors duration-300">
+                        {service.name}
+                      </h3>
+                      <p className="text-sm text-muted leading-relaxed mb-5 flex-1 font-body">
+                        {service.short}
+                      </p>
+                      <ul className="space-y-2 mb-6">
+                        {service.features.slice(0, 3).map((h) => (
+                          <li
+                            key={h}
+                            className="flex items-center gap-2 text-xs text-white/70 font-body"
+                          >
+                            <CheckBadgeIcon className="w-4 h-4 text-lime flex-shrink-0" />
+                            {h}
+                          </li>
+                        ))}
+                      </ul>
+                      <span className="inline-flex items-center gap-2 text-lime text-xs font-bold uppercase tracking-wider mt-auto">
+                        Learn More
+                        <ArrowRightIcon className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </div>
+                  </motion.div>
+                </Link>
               </AnimatedSection>
             ))}
           </div>
@@ -171,15 +113,15 @@ export default function ServicesPage() {
                 desc: "Multi-point inspection on fit, finish, paint, and safety before handoff.",
               },
             ].map((item, i) => (
-              <AnimatedSection key={item.step} delay={i * 0.15}>
+              <AnimatedSection key={item.step} delay={i * 0.1}>
                 <div className="relative text-center">
-                  <span className="text-6xl font-bold text-lime/10">
+                  <span className="font-display text-6xl font-extrabold text-lime/10">
                     {item.step}
                   </span>
-                  <h3 className="text-lg font-bold text-white mt-2 mb-3">
+                  <h3 className="font-display text-lg font-bold text-white mt-2 mb-3">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-muted leading-relaxed">
+                  <p className="text-sm text-muted leading-relaxed font-body">
                     {item.desc}
                   </p>
                   {i < 3 && (
@@ -194,14 +136,17 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* ─── FAQ ─── */}
+      <FAQSection background="black" />
+
       {/* ─── CTA ─── */}
-      <section className="py-32 bg-black">
+      <section className="py-32 bg-card/30">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
+            <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-white">
               Need a <span className="gradient-text">Repair?</span>
             </h2>
-            <p className="mt-6 text-lg text-muted max-w-md mx-auto">
+            <p className="mt-6 text-lg text-muted max-w-md mx-auto font-body">
               Free estimate — no obligation, no pressure. Walk in, call, or use
               our online form.
             </p>
