@@ -481,7 +481,7 @@ export default function Home() {
       <section className="relative py-32 overflow-hidden">
         {/* Background image */}
         <Image
-          src="/images/cta-background.jpg"
+          src="/images/cta-background-v4.jpg"
           alt=""
           fill
           sizes="100vw"
@@ -490,8 +490,6 @@ export default function Home() {
         />
         {/* Dark overlay for legibility */}
         <div className="absolute inset-0 bg-black/70" />
-        {/* Green glow accent */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(96,174,72,0.25),transparent_70%)]" />
 
         <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <AnimatedSection>
