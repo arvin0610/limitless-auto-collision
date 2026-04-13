@@ -1,14 +1,21 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
+import { Bricolage_Grotesque, DM_Sans, Big_Shoulders } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-// Display font — bold contemporary editorial
+// Display font — bold contemporary editorial (used for headings)
 const display = Bricolage_Grotesque({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
+});
+
+// Hero font — heavy industrial condensed (used only in hero)
+const hero = Big_Shoulders({
+  variable: "--font-hero",
+  subsets: ["latin"],
+  weight: ["700", "800", "900"],
 });
 
 // Body font — refined, neutral but characterful
@@ -35,7 +42,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${display.variable} ${dmSans.variable} antialiased`}
+      data-scroll-behavior="smooth"
+      className={`${display.variable} ${hero.variable} ${dmSans.variable} antialiased`}
     >
       <body className="min-h-screen flex flex-col bg-black text-white font-body">
         <Navbar />

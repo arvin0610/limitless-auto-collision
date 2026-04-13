@@ -479,8 +479,19 @@ export default function Home() {
 
       {/* ─── CTA ─── */}
       <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-lime/20 via-lime/5 to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(96,174,72,0.15),transparent_70%)]" />
+        {/* Background image */}
+        <Image
+          src="/images/cta-background.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+          priority={false}
+        />
+        {/* Dark overlay for legibility */}
+        <div className="absolute inset-0 bg-black/70" />
+        {/* Green glow accent */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(96,174,72,0.25),transparent_70%)]" />
 
         <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <AnimatedSection>

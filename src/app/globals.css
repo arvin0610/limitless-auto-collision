@@ -25,6 +25,11 @@ h1, h2, h3, .font-display {
   font-family: var(--font-body), system-ui, sans-serif;
 }
 
+.font-hero {
+  font-family: var(--font-hero), system-ui, sans-serif;
+  letter-spacing: -0.01em;
+}
+
 * {
   scrollbar-width: thin;
   scrollbar-color: #60ae48 #111111;
